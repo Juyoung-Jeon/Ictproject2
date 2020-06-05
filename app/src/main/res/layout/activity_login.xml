@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity"
+    android:background="@color/tabBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="110dp">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_idcard" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share Ability"
+                android:textSize="40dp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:padding="40dp">
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#ffffff"
+            android:hint="이메일"
+            android:textColorHint="#77383A3C"
+            android:layout_marginBottom="6dp"
+            android:padding="4dp"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#ffffff"
+            android:hint="비밀번호"
+            android:textColorHint="#77383A3C"
+            android:padding="4dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="#ffffff"
+        android:text="로그인"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/kakaoLogin"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:drawableLeft="@drawable/ic_iconfinder_kakao_talk2_289120"
+            android:drawablePadding="5dp"
+            android:text="카카오로 로그인"
+            android:layout_marginBottom="8dp"
+            android:background="#ffffff" />
+
+        <Button
+            android:id="@+id/emailLogin"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:drawableLeft="@drawable/ic_iconfinder_mail_115714"
+            android:drawablePadding="5dp"
+            android:text="이메일로 로그인"
+            android:background="#ffffff"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/findId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디 찾기"
+            android:clickable="true"
+            android:layout_marginRight="12dp"/>
+
+        <TextView
+            android:id="@+id/findPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 찾기"
+            android:clickable="true"
+            android:layout_marginRight="12dp"/>
+
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원가입"
+            android:clickable="true" />
+    </LinearLayout>
+
+</LinearLayout>
