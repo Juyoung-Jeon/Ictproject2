@@ -1,8 +1,9 @@
-package com.example.ictproject;
+package com.example.ictproject.upload;
 
 public class Upload {
     private String mName;
     private String mImageUrl;
+    private String mAge;
     private String mExperience;
     private String mRegion;
     private String mDay;
@@ -11,9 +12,10 @@ public class Upload {
         //empty constructor needed
     }
 
-    public Upload(String name, String imageUrl, String experience,String region, String day) {
+    public Upload(String name, String imageUrl, String age, String experience,String region, String day) {
         mName = name;
         mImageUrl = imageUrl;
+        mAge = age;
         mExperience = experience;
         mRegion = region;
         mDay = day;
@@ -29,6 +31,12 @@ public class Upload {
     }
     public void setImageUrl(String imageUrl) {
         mImageUrl = imageUrl;
+    }
+    public String getAge() {
+        return mAge;
+    }
+    public void setAge(String age) {
+        mAge = age;
     }
     public String getExperience() {
         return mExperience;

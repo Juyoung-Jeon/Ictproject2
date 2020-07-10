@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.ictproject.activity.LoginActivity;
+
 public class FirstLoadingPage extends AppCompatActivity {
 
     private final long splash_timeout = 3000L;

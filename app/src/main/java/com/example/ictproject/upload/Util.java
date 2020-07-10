@@ -1,4 +1,4 @@
-package com.example.ictproject;
+package com.example.ictproject.upload;
 
 import android.app.Activity;
 import android.widget.Toast;

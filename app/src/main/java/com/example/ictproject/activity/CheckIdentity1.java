@@ -1,14 +1,16 @@
-package com.example.ictproject;
+package com.example.ictproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class CheckIdentity2 extends AppCompatActivity {
+import com.example.ictproject.R;
+
+public class CheckIdentity1 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check_identity2);
+        setContentView(R.layout.activity_check_identity1);
     }
 }

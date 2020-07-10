@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".activity.Resume">
+
 
     <LinearLayout
         android:id="@+id/write_resume"
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:text="이력서 작성"
+            android:text="이력서"
             android:textColor="#000000"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -50,7 +50,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/image_view"
+            android:id="@+id/mImage_view"
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:layout_below="@+id/w"
@@ -65,37 +65,41 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/edit_text_file_name"
+                android:layout_above="@+id/edit_text_file_mName"
                 android:layout_marginLeft="14dp"
                 android:text="이름"
                 android:textColor="#000000"
                 android:textSize="15dp" />
 
-            <EditText
-                android:id="@+id/edit_text_file_name"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/edit_text_file_mName"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_above="@id/age"
-                android:padding="8dp" />
+                android:layout_marginLeft="10dp"
+                android:background="#00ff0000"
+                android:padding="8dp"
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/edit_text_age"
+                android:layout_above="@+id/edit_text_mAge"
                 android:layout_marginLeft="14dp"
                 android:text="나이"
                 android:textColor="#000000"
                 android:textSize="15dp" />
 
-            <EditText
-                android:id="@+id/edit_text_age"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/edit_text_mAge"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_marginLeft="10dp"
+                android:background="#00ff0000"
                 android:padding="8dp"
-                android:layout_alignParentBottom="true"/>
+                android:textColor="#000000"/>
 
         </RelativeLayout>
 
@@ -113,8 +117,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/line2"
         android:layout_above="@+id/button_upload"
+        android:layout_below="@+id/line2"
         android:layout_marginTop="8dp"
         android:orientation="vertical">
 
@@ -142,19 +146,22 @@
                     android:textColor="#000000" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/experience"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/mExperience"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="ex) 세븐일레븐 6개월" />
+                android:background="#00ff0000"
+                android:padding="4dp"
+                android:textColor="#000000"
+                android:textSize="15dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -175,19 +182,22 @@
                     android:textColor="#000000" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/possible_region"
+            <TextView
+                android:id="@+id/mPossible_region"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="ex) 서울시 마포구, 전체" />
+                android:background="#00ff0000"
+                android:padding="4dp"
+                android:textColor="#000000"
+                android:textSize="15dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -208,21 +218,26 @@
                     android:textColor="#000000" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/possible_day"
+            <TextView
+                android:id="@+id/mPossible_day"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="ex) 2020년 5월 1일 ~ 12월 31일"/>
+                android:background="#00ff0000"
+                android:textSize="15dp"
+                android:padding="4dp"
+                android:textColor="#000000"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/button_upload"
+        android:id="@+id/call1_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="등록" />
+        android:text="연락하기"
+        android:background="#00ff0000"/>
+
 </RelativeLayout>

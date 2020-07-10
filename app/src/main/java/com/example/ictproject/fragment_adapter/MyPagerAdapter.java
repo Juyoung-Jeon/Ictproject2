@@ -1,4 +1,4 @@
-package com.example.ictproject;
+package com.example.ictproject.fragment_adapter;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

@@ -1,4 +1,4 @@
-package com.example.ictproject;
+package com.example.ictproject.upload;
 
 public class CompanyUpload {
     private String cName;

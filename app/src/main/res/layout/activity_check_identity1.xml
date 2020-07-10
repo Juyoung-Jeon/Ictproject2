@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff"
-    tools:context=".CheckIdentity1">
+    tools:context=".activity.CheckIdentity1">
 
     <TextView
         android:layout_width="wrap_content"

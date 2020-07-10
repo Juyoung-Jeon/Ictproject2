@@ -1,4 +1,4 @@
-package com.example.ictproject;
+package com.example.ictproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ictproject.upload.CompanyUpload;
+import com.example.ictproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -56,7 +58,7 @@ public class CompanyInfo extends AppCompatActivity {
             user = FirebaseAuth.getInstance().getCurrentUser();
             CompanyUpload companyUpload = new CompanyUpload(cEditTextName.getText().toString().trim(),
                     cEditTextPhone.getText().toString().trim());
-            cDatabaseRef.child("company").child(user.getUid()).setValue(companyUpload);
+            cDatabaseRef.child(user.getUid()).setValue(companyUpload);
             Toast.makeText(CompanyInfo.this, "등록 성공", Toast.LENGTH_LONG).show();
             myStartActivity(MainActivity.class);
         } else{

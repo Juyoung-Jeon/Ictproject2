@@ -1,25 +1,40 @@
-package com.example.ictproject;
+package com.example.ictproject.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.ictproject.fragment_adapter.MyPagerAdapter;
+import com.example.ictproject.R;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
     private ImageView r_resume;
+    private FirebaseUser user;
+    private DatabaseReference dataRef;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dataRef = FirebaseDatabase.getInstance().getReference("user");
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        uid  = user.getUid();
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.addTab(tabs.newTab().setText("알바생 찾기"));
@@ -37,11 +52,26 @@ public class MainActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
 
         r_resume = findViewById(R.id.r_resume);
-        r_resume.setOnClickListener(new View.OnClickListener() {
+
+        dataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Resume.class);
-                startActivity(intent);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild(uid)){
+                    r_resume.setEnabled(false);
+                } else {
+                    r_resume.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(MainActivity.this, Resume.class);
+                            startActivity(intent);
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }

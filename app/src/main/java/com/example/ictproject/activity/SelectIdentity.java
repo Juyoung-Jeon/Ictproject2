@@ -1,12 +1,13 @@
-package com.example.ictproject;
+package com.example.ictproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.ictproject.R;
 
 public class SelectIdentity extends AppCompatActivity {
 

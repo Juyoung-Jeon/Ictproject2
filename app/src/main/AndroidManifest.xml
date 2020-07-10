@@ -14,12 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CompanyInfo"></activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SelectIdentity" />
-        <activity android:name=".Resume" />
-        <activity android:name=".CompanyRegister" />
+        <activity android:name=".activity.ConnectActivity"
+            android:theme="@style/Transparent">
+        </activity>
+        <activity android:name=".activity.CompanyInfo" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.SelectIdentity" />
+        <activity android:name=".activity.Resume" />
+        <activity android:name=".activity.CompanyRegister" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
@@ -32,9 +35,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CheckIdentity2" />
-        <activity android:name=".CheckIdentity1" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.CheckIdentity2" />
+        <activity android:name=".activity.CheckIdentity1" />
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.Resume_main"/>
     </application>
 
 </manifest>
