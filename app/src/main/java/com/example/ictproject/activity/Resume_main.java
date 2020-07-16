@@ -43,6 +43,8 @@ public class Resume_main extends AppCompatActivity {
         String region = intent.getExtras().getString("region");
         String day = intent.getExtras().getString("day");
 
+        final String uid = intent.getExtras().getString("uid");
+
         mEditTextFileName.setText(name);
         mEditTextAge.setText(age);
         mExperience.setText(experience);
@@ -59,6 +61,7 @@ public class Resume_main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Resume_main.this, ConnectActivity.class);
+                intent.putExtra("ResumeUid", uid);
                 startActivity(intent);
             }
         });

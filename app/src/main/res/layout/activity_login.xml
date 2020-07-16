@@ -62,7 +62,8 @@
             android:background="#ffffff"
             android:hint="비밀번호"
             android:textColorHint="#77383A3C"
-            android:padding="4dp"/>
+            android:padding="4dp"
+            android:inputType="textPassword"/>
 
     </LinearLayout>
 

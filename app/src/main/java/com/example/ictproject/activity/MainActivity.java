@@ -6,11 +6,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.example.ictproject.fragment_adapter.MyPagerAdapter;
 import com.example.ictproject.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,12 +23,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     private ImageView r_resume;
     private FirebaseUser user;
     private DatabaseReference dataRef;
+    private FirebaseFirestore firebaseFirestore;
     private String uid;
 
     @Override
@@ -32,9 +45,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dataRef = FirebaseDatabase.getInstance().getReference("user");
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid  = user.getUid();
+        dataRef = FirebaseDatabase.getInstance().getReference("user");
+
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.addTab(tabs.newTab().setText("알바생 찾기"));
@@ -74,6 +88,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String token = instanceIdResult.getToken();
+                Map<String, String> map = new HashMap<>();
+                map.put("pushToken", token);
+                firebaseFirestore.getInstance().collection("token").document(uid).set(map);
+            }
+        });
     }
 
     @Override
@@ -83,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(1);
     }
+
 }
 
 

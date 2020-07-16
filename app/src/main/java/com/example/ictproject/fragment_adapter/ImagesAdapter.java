@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ictproject.R;
 import com.example.ictproject.activity.Resume_main;
 import com.example.ictproject.upload.Upload;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -33,6 +35,8 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImageViewH
     }
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String uid = user.getUid();
         final Upload uploadCurrent = mUploads.get(position);
         holder.textViewName.setText(uploadCurrent.getName());
         Picasso.with(mContext)
@@ -50,6 +54,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImageViewH
                 intent.putExtra("experience", uploadCurrent.getExperience());
                 intent.putExtra("region", uploadCurrent.getRegion());
                 intent.putExtra("day", uploadCurrent.getDay());
+                intent.putExtra("uid", uid);
                 v.getContext().startActivity(intent);
             }
         });
