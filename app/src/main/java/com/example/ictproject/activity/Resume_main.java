@@ -2,6 +2,7 @@ package com.example.ictproject.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,8 +43,7 @@ public class Resume_main extends AppCompatActivity {
         String experience = intent.getExtras().getString("experience");
         String region = intent.getExtras().getString("region");
         String day = intent.getExtras().getString("day");
-
-        final String uid = intent.getExtras().getString("uid");
+        final String uid = intent.getExtras().getString("ResumeUid");
 
         mEditTextFileName.setText(name);
         mEditTextAge.setText(age);
@@ -62,6 +62,7 @@ public class Resume_main extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Resume_main.this, ConnectActivity.class);
                 intent.putExtra("ResumeUid", uid);
+                Log.e("ResumeUid", uid);
                 startActivity(intent);
             }
         });

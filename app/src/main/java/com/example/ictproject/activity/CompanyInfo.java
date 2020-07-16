@@ -57,7 +57,7 @@ public class CompanyInfo extends AppCompatActivity {
         if(cEditTextName.length()>0 && cEditTextPhone.length()>8) {
             user = FirebaseAuth.getInstance().getCurrentUser();
             CompanyUpload companyUpload = new CompanyUpload(cEditTextName.getText().toString().trim(),
-                    cEditTextPhone.getText().toString().trim());
+                    cEditTextPhone.getText().toString().trim(), user.getUid());
             cDatabaseRef.child(user.getUid()).setValue(companyUpload);
             Toast.makeText(CompanyInfo.this, "등록 성공", Toast.LENGTH_LONG).show();
             myStartActivity(MainActivity.class);

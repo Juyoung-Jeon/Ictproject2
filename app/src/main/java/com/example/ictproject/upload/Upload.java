@@ -7,18 +7,20 @@ public class Upload {
     private String mExperience;
     private String mRegion;
     private String mDay;
+    private String uId;
 
     public Upload() {
         //empty constructor needed
     }
 
-    public Upload(String name, String imageUrl, String age, String experience,String region, String day) {
+    public Upload(String name, String imageUrl, String age, String experience,String region, String day, String uid) {
         mName = name;
         mImageUrl = imageUrl;
         mAge = age;
         mExperience = experience;
         mRegion = region;
         mDay = day;
+        uId = uid;
     }
     public String getName() {
         return mName;
@@ -56,4 +58,6 @@ public class Upload {
     public void setDay(String day) {
         mDay = day;
     }
+    public String getuId() { return uId; }
+    public void setuId(String uId) { this.uId = uId; }
 }

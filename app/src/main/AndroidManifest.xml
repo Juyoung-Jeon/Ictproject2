@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.ConnectActivity"
-            android:theme="@style/Transparent"></activity>
+            android:theme="@style/Transparent" />
         <activity android:name=".activity.CompanyInfo" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.LoginActivity" />
@@ -35,7 +35,6 @@
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.Resume_main" />
 
-
         <service
             android:name=".MyFirebaseMessagingService"
             android:stopWithTask="false">
@@ -44,19 +43,15 @@
             </intent-filter>
         </service>
 
-
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_idcard" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />

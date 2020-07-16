@@ -2,6 +2,7 @@ package com.example.ictproject.fragment_adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +36,6 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImageViewH
     }
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        final String uid = user.getUid();
         final Upload uploadCurrent = mUploads.get(position);
         holder.textViewName.setText(uploadCurrent.getName());
         Picasso.with(mContext)
@@ -54,7 +53,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImageViewH
                 intent.putExtra("experience", uploadCurrent.getExperience());
                 intent.putExtra("region", uploadCurrent.getRegion());
                 intent.putExtra("day", uploadCurrent.getDay());
-                intent.putExtra("uid", uid);
+                intent.putExtra("ResumeUid", uploadCurrent.getuId());
                 v.getContext().startActivity(intent);
             }
         });

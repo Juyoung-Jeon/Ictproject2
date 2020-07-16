@@ -66,19 +66,6 @@ public class ConnectActivity extends AppCompatActivity {
                     company.setText(cUpload.getCName());
                     phone.setText(cUpload.getCPhone());
 
-                    button2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            collectionReference.document(ResumeUid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                @Override
-                                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                    mPushToken = documentSnapshot.getString("pushToken");
-                                    SendNotification.sendNotification(mPushToken, cUpload.getCName(), cUpload.getCPhone());
-                                    finish();
-                                }
-                            });
-                        }
-                    });
                 }
             }
 
@@ -92,6 +79,22 @@ public class ConnectActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                collectionReference.document(ResumeUid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        mPushToken = documentSnapshot.getString("pushToken");
+                        Log.e("ResumeUid", ResumeUid);
+                        Log.e("token", mPushToken);
+                        SendNotification.sendNotification(mPushToken, "shareAbility", "연락이 왔어요!");
+                        finish();
+                    }
+                });
             }
         });
 

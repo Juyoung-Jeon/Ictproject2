@@ -121,7 +121,7 @@ public class Resume extends AppCompatActivity {
                             while (!urlTask.isSuccessful()) ;
                             Uri downloadUrl = urlTask.getResult();
                             Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), downloadUrl.toString(), mEditTextAge.getText().toString().trim(),
-                                    mExperience.getText().toString().trim(), mRegion.getText().toString().trim(), mDay.getText().toString().trim());
+                                    mExperience.getText().toString().trim(), mRegion.getText().toString().trim(), mDay.getText().toString().trim(), user.getUid());
                             mDatabaseRef.child(user.getUid()).setValue(upload);
                             finish();
                         }
