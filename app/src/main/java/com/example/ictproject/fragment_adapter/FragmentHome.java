@@ -21,9 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fragment_one extends Fragment {
+public class FragmentHome extends Fragment {
 
-    public Fragment_one() {
+    public FragmentHome() {
         // Required empty public constructor
     }
 
@@ -35,7 +35,7 @@ public class Fragment_one extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.activity_fragment_main, container, false);
+        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.activity_fragment_home, container, false);
         mRecyclerView = (RecyclerView)rootView.findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
@@ -46,7 +46,7 @@ public class Fragment_one extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mUploads.clear();
 
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot postSnapshot : dataSnapshot.child("employee").getChildren()) {
                     Upload upload = postSnapshot.getValue(Upload.class);
                     mUploads.add(upload);
                 }

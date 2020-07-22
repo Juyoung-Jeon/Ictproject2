@@ -7,4 +7,5 @@
     <color name="tabBackground">#1100BCD4</color>
     <color name="tabBackground1">#5603A9F4</color>
     <color name="transparent">#1A000000</color>
+    <color name="menuSelected">#E900BCD4</color>
 </resources>

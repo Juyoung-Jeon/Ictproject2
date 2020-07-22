@@ -2,20 +2,21 @@ package com.example.ictproject.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.ictproject.fragment_adapter.MyPagerAdapter;
+import com.example.ictproject.fragment_adapter.FragmentChat;
+import com.example.ictproject.fragment_adapter.FragmentHome;
+import com.example.ictproject.fragment_adapter.FragmentPage;
+import com.example.ictproject.fragment_adapter.FragmentRecommend;
 import com.example.ictproject.R;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,8 +24,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
@@ -40,37 +39,36 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private String uid;
 
+    Fragment FragmentHome;
+    Fragment FragmentRecommend;
+    Fragment FragmentChat;
+    Fragment FragmentPage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        FragmentHome = new FragmentHome();
+        FragmentRecommend = new FragmentRecommend();
+        FragmentChat = new FragmentChat();
+        FragmentPage = new FragmentPage();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, FragmentHome).commit();
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid  = user.getUid();
         dataRef = FirebaseDatabase.getInstance().getReference("user");
-
-
-        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-        tabs.addTab(tabs.newTab().setText("알바생 찾기"));
-        tabs.addTab(tabs.newTab().setText("추천 알바생"));
-        tabs.addTab(tabs.newTab().setText("마이 페이지"));
-        tabs.setTabGravity(tabs.GRAVITY_FILL);
-
-        //어답터설정
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        final MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), 3);
-        viewPager.setAdapter(myPagerAdapter);
-
-        //탭메뉴를 클릭하면 해당 프래그먼트로 변경-싱크화
-        tabs.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
 
         r_resume = findViewById(R.id.r_resume);
 
         dataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChild(uid)){
+                if (dataSnapshot.child("employee").hasChild(uid)){
                     r_resume.setEnabled(false);
                 } else {
                     r_resume.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +97,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            switch (menuItem.getItemId()){
+                case R.id.homeItem:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, FragmentHome).commit();
+                    return true;
+                case R.id.recommendItem:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, FragmentRecommend).commit();
+                    return true;
+                case R.id.chatItem:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, FragmentChat).commit();
+                    return true;
+                case R.id.myPageItem:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, FragmentPage).commit();
+                    return true;
+            }
+            return false;
+        }
+    };
 
     @Override
     public void onBackPressed() {

@@ -50,7 +50,7 @@ public class ConnectActivity extends AppCompatActivity {
         company = findViewById(R.id.rCompanyName);
         phone = findViewById(R.id.rCompanyPhone);
 
-        cDatabaseRef = FirebaseDatabase.getInstance().getReference("company");
+        cDatabaseRef = FirebaseDatabase.getInstance().getReference("user");
         collectionReference = FirebaseFirestore.getInstance().collection("token");
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
@@ -61,8 +61,8 @@ public class ConnectActivity extends AppCompatActivity {
         cDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChild(uid)){
-                    cUpload = dataSnapshot.child(uid).getValue(CompanyUpload.class);
+                if (dataSnapshot.child("company").hasChild(uid)){
+                    cUpload = dataSnapshot.child("company").child(uid).getValue(CompanyUpload.class);
                     company.setText(cUpload.getCName());
                     phone.setText(cUpload.getCPhone());
 

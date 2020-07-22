@@ -9,16 +9,16 @@ import androidx.fragment.app.Fragment;
 
 import com.example.ictproject.R;
 
-public class Fragment_three extends Fragment {
+public class FragmentRecommend extends Fragment {
 
-    public Fragment_three() {
+    public FragmentRecommend() {
         // Required empty public constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_fragment_my, container, false);
+        return inflater.inflate(R.layout.activity_fragment_recommend, container, false);
     }
 
 }

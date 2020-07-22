@@ -30,14 +30,14 @@
             android:layout_height="50dp"
             android:layout_marginBottom="12dp"
             android:background="@color/tabBackground"
-            android:text="구직자" />
+            android:text="개인회원" />
 
         <Button
             android:id="@+id/button_of_employer"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:background="#6803A9F4"
-            android:text="구인업체" />
+            android:text="사업자회원" />
 
     </LinearLayout>
 
