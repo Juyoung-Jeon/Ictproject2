@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 
 import com.example.ictproject.R;
 import com.example.ictproject.SendNotification;
+import com.example.ictproject.chat.MessageActivity;
 import com.example.ictproject.upload.CompanyUpload;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -85,16 +87,9 @@ public class ConnectActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectionReference.document(ResumeUid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        mPushToken = documentSnapshot.getString("pushToken");
-                        Log.e("ResumeUid", ResumeUid);
-                        Log.e("token", mPushToken);
-                        SendNotification.sendNotification(mPushToken, "shareAbility", "연락이 왔어요!");
-                        finish();
-                    }
-                });
+                Intent intent = new Intent(ConnectActivity.this, MessageActivity.class);
+                intent.putExtra("destinationUid", ResumeUid);
+                startActivity(intent);
             }
         });
 
