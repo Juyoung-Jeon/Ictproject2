@@ -102,9 +102,11 @@ public class FragmentChat extends Fragment {
                     if (dataSnapshot.child("company").hasChild(finalDestinationUid)) {
                         CompanyUpload cUploads = dataSnapshot.child("company").child(finalDestinationUid).getValue(CompanyUpload.class);
                         customViewHolder.tvTitle.setText(cUploads.getCName());
-                    } else {
+                    } else if(dataSnapshot.child("employee").hasChild(finalDestinationUid)) {
                         Upload mUploads = dataSnapshot.child("employee").child(finalDestinationUid).getValue(Upload.class);
                         customViewHolder.tvTitle.setText(mUploads.getName());
+                    } else {
+
                     }
 
                 }
